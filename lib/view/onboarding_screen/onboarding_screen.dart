@@ -1,4 +1,10 @@
+import 'package:e_commerce_app/utils/color_constants.dart';
+import 'package:e_commerce_app/view/onboarding_screen/onboarding_animation.dart';
+import 'package:e_commerce_app/view/onboarding_screen/tabs/tab1.dart';
+import 'package:e_commerce_app/view/onboarding_screen/tabs/tab2.dart';
+import 'package:e_commerce_app/view/onboarding_screen/tabs/tab3.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -8,88 +14,73 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  List Screen = [Tab1(), Tab2(), Tab3()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      appBar: AppBar(
+        leading: Row(children: [
+          SizedBox(
+            width: 17,
+          ),
+          Text("1",
+              style: TextStyle(
+                  fontSize: 18,
+                  color: ColorConstants.BLACK,
+                  fontWeight: FontWeight.w600)),
+          Text("/3",
+              style: TextStyle(
+                  fontSize: 18,
+                  color: ColorConstants.GREY1,
+                  fontWeight: FontWeight.w600)),
+        ]),
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/login');
+              print("Hello");
+            },
+            child: Text("Skip",
+                style: GoogleFonts.montserrat(
+                    fontSize: 18,
+                    color: ColorConstants.BLACK,
+                    fontWeight: FontWeight.w600)),
+          ),
+          SizedBox(
+            width: 17,
+          )
+        ],
+      ),
+      body: PageView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) => Column(
           children: [
-            Row(
-              children: [
-                Text("1",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500)),
-                Text("/3",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xffA0A0A1),
-                        fontWeight: FontWeight.w500)),
-                Expanded(child: SizedBox()),
-                Text("Skip",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500)),
-              ],
-            ),
-            Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: 300,
-                    width: 300,
-                    child: Image.asset("assets/images/onboarding1.png"),
-                  ),
+                  index != 0
+                      ? Text(
+                          "Prev",
+                          style: GoogleFonts.montserrat(
+                              fontSize: 18, color: ColorConstants.GREY1),
+                        )
+                      : SizedBox(),
                   SizedBox(
-                    height: 15,
+                    width: 80,
+                    height: 10,
+                    child: Indicator(
+                      currentIndex: index,
+                    ),
                   ),
                   Text(
-                    "Choose product",
-                    style: TextStyle(
-                        fontFamily: "Montserrat",
-                        fontSize: 24,
-                        fontWeight: FontWeight.w900),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    height: 72,
-                    width: 340,
-                    child: Text(
-                      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
-                      style: TextStyle(
-                          color: Color(0xffA8A8A9),
-                          fontFamily: "Montserrat",
-                          fontSize: 14,
-                          letterSpacing: 2,
-                          fontWeight: FontWeight.w400),
-                    ),
+                    "Next",
+                    style: GoogleFonts.montserrat(
+                        fontSize: 18, color: ColorConstants.PRIMARY),
                   ),
                 ],
               ),
             ),
-            Row(
-              children: [
-                TabBar(tabs: [
-                  CircleAvatar(
-                    backgroundColor: Colors.red,
-                  ),
-                  CircleAvatar(
-                    backgroundColor: Colors.red,
-                  ),
-                  CircleAvatar(
-                    backgroundColor: Colors.red,
-                  )
-                ])
-              ],
-            )
           ],
         ),
       ),

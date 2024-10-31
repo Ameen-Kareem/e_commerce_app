@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/view/login_screen/login_screen.dart';
 import 'package:e_commerce_app/view/onboarding_screen/onboarding_screen.dart';
 import 'package:e_commerce_app/view/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class ECommerceApp extends StatelessWidget {
       routes: {
         '/splash': (context) => SplashScreen(),
         '/onboarding': (context) => OnBoardingScreen(),
+        '/login': (context) => LoginScreen()
       },
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),

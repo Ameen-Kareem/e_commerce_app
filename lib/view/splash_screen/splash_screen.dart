@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:e_commerce_app/utils/color_constants.dart';
 import 'package:e_commerce_app/utils/image_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -39,8 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Container(
               child: Text(
                 "Stylish",
-                style: TextStyle(
-                    fontFamily: "LibreCaslonText",
+                style: GoogleFonts.libreCaslonText(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: ColorConstants.PRIMARY),
